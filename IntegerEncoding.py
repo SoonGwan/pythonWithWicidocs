@@ -1,6 +1,7 @@
 from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from collections import Counter
 
 text = "A barber is a person. a barber is good person. a barber is huge person. he Knew A Secret! The Secret He Kept is huge secret. Huge secret. His barber kept his word. a barber kept his word. His barber kept his secret. But keeping and keeping such a huge secret to himself was driving the barber crazy. the barber went up a huge mountain."
 text = sent_tokenize(text)
@@ -59,3 +60,13 @@ for s in sentences:
             temp.append(word_to_index['OOV'])
     encoded.append(temp)
 print(encoded)
+
+words = sum(sentences, [])
+# 위와 같은 작업은 words = np.hstack(sentences) 로 작업가능
+
+vocab = Counter(words)  # Counter 모듈을 이용하면단어의 모든 빈도를 쉽게 계산할 수 있다.
+print(vocab["barber"])
+
+vocab_size = 5
+vocab = vocab.most_common(vocab_size)
+print(vocab)

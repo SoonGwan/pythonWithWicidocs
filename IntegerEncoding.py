@@ -2,6 +2,9 @@ from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from collections import Counter
+from nltk import FreqDist
+
+import numpy as np
 
 text = "A barber is a person. a barber is good person. a barber is huge person. he Knew A Secret! The Secret He Kept is huge secret. Huge secret. His barber kept his word. a barber kept his word. His barber kept his secret. But keeping and keeping such a huge secret to himself was driving the barber crazy. the barber went up a huge mountain."
 text = sent_tokenize(text)
@@ -69,4 +72,11 @@ print(vocab["barber"])
 
 vocab_size = 5
 vocab = vocab.most_common(vocab_size)
-print(vocab)
+# print(vocab)
+
+vocab = FreqDist(np.hstack(sentences))
+# print(vocab)
+# print(vocab["barber"])
+
+word_to_index = {word[0]: index + 1 for index, word in enumerate(vocab)}
+print(word_to_index)

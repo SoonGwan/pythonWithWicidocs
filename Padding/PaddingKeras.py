@@ -10,4 +10,3 @@ encoded = tokenizer.texts_to_sequences(sentences)
 
 padded = pad_sequences(encoded, padding='post')
 print(padded)
-print((padded == padded_np).all())

@@ -20,3 +20,4 @@ def one_hot_encoidng(word, word2index):
 
 
 one_hot_encoidng("자연어", word2index)
+
